@@ -1,0 +1,23 @@
+@Library('sharedlib') _
+
+properties([
+    parameters([
+        string(name: 'REPO_URL', defaultValue: 'https://github.com/mroluyomiosh/mroluyomiosh-terra-gitops.git', description: 'GitHub repository URL'),
+        string(name: 'ORIGINAL_FILE', defaultValue: 'Jenkinsfile', description: 'Original file name'),
+        string(name: 'NEW_FILE_NAME', defaultValue: 'Jenkinsfile_NEW', description: 'New file name'),
+        string(name: 'PRODUCT_NAME', defaultValue: 'def', description: 'New product name'),
+        string(name: 'APPLICATION_NAME', defaultValue: '123', description: 'New application name'),
+        string(name: 'TEST_APPLICATION_NAME', defaultValue: '456', description: 'New test application name'),
+        string(name: 'BRANCH_NAME', defaultValue: 'feature/modify-jenkinsfile', description: 'Feature branch name')
+    ])
+])
+
+createBranchAndModifyFiles(
+    REPO_URL: params.REPO_URL,
+    ORIGINAL_FILE: params.ORIGINAL_FILE,
+    NEW_FILE_NAME: params.NEW_FILE_NAME,
+    PRODUCT_NAME: params.PRODUCT_NAME,
+    APPLICATION_NAME: params.APPLICATION_NAME,
+    TEST_APPLICATION_NAME: params.TEST_APPLICATION_NAME,
+    BRANCH_NAME: params.BRANCH_NAME
+)
