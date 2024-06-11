@@ -1,0 +1,19 @@
+@Library('sharedlib') _
+
+properties([
+    parameters([
+        string(name: 'SOURCE_JOB', defaultValue: 'automationJob', description: 'Source Jenkins job name'),
+        string(name: 'TARGET_JOB', defaultValue: 'automationJob2', description: 'Target Jenkins job name'),
+        string(name: 'PARAM1', defaultValue: 'newValue1', description: 'Parameter 1 to be replaced'),
+        string(name: 'PARAM2', defaultValue: 'newValue2', description: 'Parameter 2 to be replaced')
+    ])
+])
+
+copyAndModifyJob(
+    SOURCE_JOB: params.SOURCE_JOB,
+    TARGET_JOB: params.TARGET_JOB,
+    PARAMETERS: [
+        'oldValue1': params.PARAM1,
+        'oldValue2': params.PARAM2
+    ]
+)
